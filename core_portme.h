@@ -100,7 +100,7 @@ typedef signed int ee_s32;
 typedef double ee_f32;
 typedef unsigned char ee_u8;
 typedef unsigned int ee_u32;
-#if 1
+#if CONFIG_ARCH_64BIT
 typedef unsigned long long ee_ptr_int;
 #else
 typedef ee_u32 ee_ptr_int;
