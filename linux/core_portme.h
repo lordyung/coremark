@@ -16,6 +16,9 @@ limitations under the License.
 Original Author: Shay Gal-on
 */
 
+/* Topic: Description
+	This file contains configuration constants required to execute on different platforms
+*/
 #ifndef CORE_PORTME_H
 #define CORE_PORTME_H
 /************************/
@@ -97,7 +100,11 @@ typedef signed int ee_s32;
 typedef double ee_f32;
 typedef unsigned char ee_u8;
 typedef unsigned int ee_u32;
+#if 1
+typedef unsigned long long ee_ptr_int;
+#else
 typedef ee_u32 ee_ptr_int;
+#endif
 typedef size_t ee_size_t;
 /* align_mem:
 	This macro is used to align an offset to point to a 32b value. It is used in the Matrix algorithm to initialize the input memory blocks.
@@ -106,7 +113,7 @@ typedef size_t ee_size_t;
 
 /* Configuration: SEED_METHOD
 	Defines method to get seed values that cannot be computed at compile time.
-	
+
 	Valid values:
 	SEED_ARG - from command line.
 	SEED_FUNC - from a system function.

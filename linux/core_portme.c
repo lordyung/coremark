@@ -197,18 +197,16 @@ void portable_init(core_portable *p, int *argc, char *argv[])
 #endif
 	
 #if (MULTITHREAD>1) && (SEED_METHOD==SEED_ARG)
-	{
-		int nargs=*argc,i;
-		if ((nargs>1) && (*argv[1]=='M')) {
-			default_num_contexts=parseval(argv[1]+1);
-			if (default_num_contexts>MULTITHREAD)
-				default_num_contexts=MULTITHREAD;
-			/* Shift args since first arg is directed to the portable part and not to coremark main */
-			--nargs;
-			for (i=1; i<nargs; i++)
-				argv[i]=argv[i+1];
-			*argc=nargs;
-		}
+	int nargs=*argc,i;
+	if ((nargs>1) && (*argv[1]=='M')) {
+		default_num_contexts=parseval(argv[1]+1);
+		if (default_num_contexts>MULTITHREAD)
+			default_num_contexts=MULTITHREAD;
+		/* Shift args since first arg is directed to the portable part and not to coremark main */
+		--nargs;
+		for (i=1; i<nargs; i++)
+			argv[i]=argv[i+1];
+		*argc=nargs;
 	}
 #endif /* sample of potential platform specific init via command line, reset the number of contexts being used if first argument is M<n>*/
 	p->portable_id=1;

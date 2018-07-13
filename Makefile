@@ -25,7 +25,7 @@ score:
 	@echo "See readme.txt for run and reporting rules." 
 	
 # Ports for a couple of common self hosted platforms
-PORT_DIR=linux64
+PORT_DIR=linux
 
 ifndef PORT_DIR
 $(error PLEASE define PORT_DIR! (e.g. make PORT_DIR=simple)) 
@@ -48,7 +48,7 @@ CORE_FILES = core_list_join core_main core_matrix core_state core_util
 ORIG_SRCS = $(addsuffix .c,$(CORE_FILES))
 SRCS = $(ORIG_SRCS) $(PORT_SRCS)
 OBJS = $(addprefix $(OPATH),$(addsuffix $(OEXT),$(CORE_FILES)) $(PORT_OBJS))
-OUTNAME = coremark$(EXE)
+OUTNAME = coremark
 OUTFILE = $(OPATH)$(OUTNAME)
 LOUTCMD = $(OFLAG) $(OUTFILE) $(LFLAGS_END)
 OUTCMD = $(OUTFLAG) $(OUTFILE) $(LFLAGS_END)
@@ -97,7 +97,7 @@ run3.log-PARAM=$(PARAM3) 7 1 1200
 
 run1.log run2.log run3.log: load
 	$(MAKE) port_prerun
-	$(RUN) $(OUTFILE) $($(@)-PARAM) > $(OPATH)$@
+	# $(RUN) $(OUTFILE) $($(@)-PARAM) > $(OPATH)$@
 	$(MAKE) port_postrun
 	
 .PHONY: gen_pgo_data
