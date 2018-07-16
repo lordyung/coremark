@@ -12,6 +12,6 @@ ADD_EXECUTABLE(coremark core_list_join.c core_main.c core_matrix.c core_portme.c
 TARGET_LINK_LIBRARIES(coremark)
 
 INSTALL(TARGETS coremark DESTINATION bin)
-INSTALL(FILES coremark_test.sh DESTINATION bin
+INSTALL(FILES coremark_test DESTINATION bin
     PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
     GROUP_EXECUTE GROUP_READ)
